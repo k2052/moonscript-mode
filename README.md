@@ -29,7 +29,7 @@ This is my first emacs package :)
 If you load up a moonscript REPL (see https://github.com/leafo/moonscript/wiki/Moonscriptrepl) you can 
 then hit:
 
-<key>M</key-<key>X</key> `moonscriptrepl-mode`
+<key>M</key>-<key>X</key> `moonscriptrepl-mode`
 
 to activate.
 
