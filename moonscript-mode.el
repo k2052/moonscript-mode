@@ -1,11 +1,21 @@
-;;; moonscript-mode.el --- a simplistic major-mode for editing Moonscript
+;;; moonscript-mode.el --- a major-mode for editing Moonscript
+;;;
+;;; Author: @GriffinSchneider, @k2052, @EmacsFodder
+;;; Version: 20140803-0.1.0
+;;; Commentary:
+;;
+;;  A basic major mode for editing MoonScript, a preprocessed language
+;;  for Lua which shares many similarities with CoffeeScript.
+;;
+;;; License: MIT Licence
+;;
+;;; Code:
 
 (defvar moonscript-keywords
   '("class" "extends" "with" "export" "import" "from" "for" "in"))
 
 (defvar moonscript-keywords-regex (regexp-opt moonscript-keywords 'symbols))
 
-;; Class names - just match any word starting with a capital letter
 (defvar moonscript-class-name-regex "\\<[A-Z]\\w*\\>")
 
 (defvar moonscript-function-keywords
@@ -29,7 +39,7 @@
 
 (defvar moonscript-assignment-var-regex
   (concat "\\(\\_<\\w+\\) = "))
-  
+
 (defvar moonscript-font-lock-defaults
   (eval-when-compile
     `((,moonscript-class-name-regex     . font-lock-type-face)
@@ -54,3 +64,4 @@
 (add-to-list 'auto-mode-alist '("\\.moon$" . moonscript-mode))
 
 (provide 'moonscript-mode)
+;;; moonscript.el ends here

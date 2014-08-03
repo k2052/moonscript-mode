@@ -1,4 +1,14 @@
-;;; moonscriptrepl-mode.el --- a simplistic major-mode for editing Moonscript in a repl
+;;; moonscriptrepl-mode.el --- a major-mode for editing Moonscript in a repl
+;;
+;;; Author: @GriffinSchneider, @k2052, @EmacsFodder
+;;; Version: 20140803-0.1.0
+;;; Commentary:
+;;
+;;  A basic major mode for MoonScript REPL
+;;
+;;; License: MIT Licence
+;;
+;;; Code:
 
 (require 'moonscript-mode)
 
@@ -10,3 +20,4 @@
   (modify-syntax-entry ?\_ "w" moonscript-mode-syntax-table))
 
 (provide 'moonscriptrepl-mode)
+;;; moonscriptrepl-mode.el ends here
