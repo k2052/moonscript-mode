@@ -60,8 +60,9 @@
   (modify-syntax-entry ?\n "> b" moonscript-mode-syntax-table)
   (modify-syntax-entry ?\_ "w" moonscript-mode-syntax-table))
 
-;;;###autoload
-(add-to-list 'auto-mode-alist '("\\.moon$" . moonscript-mode))
-
 (provide 'moonscript-mode)
+
+;;;###autoload
+(add-to-list 'auto-mode-alist '("\\.moon\\'" . moonscript-mode))
+
 ;;; moonscript.el ends here
