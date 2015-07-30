@@ -11,6 +11,9 @@
 ;;
 ;;; Code:
 
+(defvar moonscript-mode-hook nil
+  "List of functions to be executed with web-mode.")
+
 (defvar moonscript-keywords
   '("class" "extends" "with" "export" "import" "from" "for" "in"))
 
