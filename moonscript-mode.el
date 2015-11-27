@@ -14,10 +14,28 @@
 (defvar moonscript-mode-hook nil
   "List of functions to be executed with web-mode.")
 
+(defvar moonscript-statement
+  '("return" "break" "continue"))
+
+(defvar moonscript-repeat
+  '("for" "while"))
+
+(defvar moonscript-conditional
+  '("if" "else" "elseif" "then" "switch" "when" "unless"))
+
+(defvar moonscript-keyword
+  '("export" "local" "import" "from" "with" "in" "and" "or" "not"
+    "class" "extends" "super" "using" "do"))
+
 (defvar moonscript-keywords
-  '("class" "extends" "with" "export" "import" "from" "for" "in"))
+  (append moonscript-statement moonscript-repeat moonscript-conditional moonscript-keyword))
+
+(defvar moonscript-constants
+  '("nil" "true" "false" "self"))
 
 (defvar moonscript-keywords-regex (regexp-opt moonscript-keywords 'symbols))
+
+(defvar moonscript-constants-regex (regexp-opt moonscript-constants 'symbols))
 
 (defvar moonscript-class-name-regex "\\<[A-Z]\\w*\\>")
 
@@ -46,8 +64,9 @@
 (defvar moonscript-font-lock-defaults
   (eval-when-compile
     `((,moonscript-class-name-regex     . font-lock-type-face)
-      (,moonscript-function-regex       . font-lock-builtin-face)
+      (,moonscript-function-regex       . font-lock-function-name-face)
       (,moonscript-assignment-regex     . font-lock-preprocessor-face)
+      (,moonscript-constants-regex      . font-lock-constant-face)
       (,moonscript-keywords-regex       . font-lock-keyword-face)
       (,moonscript-ivar-regex           . font-lock-variable-name-face)
       (,moonscript-assignment-var-regex . (1 font-lock-variable-name-face))
