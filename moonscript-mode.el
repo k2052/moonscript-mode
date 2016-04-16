@@ -11,6 +11,11 @@
 ;;
 ;;; Code:
 
+(defgroup moonscript nil
+  "MoonScript (for Lua) language support for Emacs."
+  :tag "MoonScript"
+  :group 'languages)
+
 (defvar moonscript-mode-hook nil
   "List of functions to be executed with web-mode.")
 
