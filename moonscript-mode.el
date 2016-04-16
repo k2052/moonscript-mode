@@ -11,8 +11,19 @@
 ;;
 ;;; Code:
 
+(defgroup moonscript nil
+  "MoonScript (for Lua) language support for Emacs."
+  :tag "MoonScript"
+  :group 'languages)
+
 (defvar moonscript-mode-hook nil
   "List of functions to be executed with web-mode.")
+
+(defcustom moonscript-indent-offset 2
+  "How many spaces to indent MoonScript code per level of nesting."
+  :group 'moonscript
+  :type 'integer
+  :safe 'integerp)
 
 (defvar moonscript-statement
   '("return" "break" "continue"))
@@ -75,9 +86,53 @@
       (,moonscript-table-key-regex      . font-lock-variable-name-face)
       ("!"                              . font-lock-warning-face))))
 
+(defun moonscript-indent-level (&optional blankval)
+  "Return nesting depth of current line.
+
+If BLANKVAL is non-nil, return that instead if the line is blank.
+Upon return, regexp match data is set to the leading whitespace."
+  (assert (= (point) (point-at-bol)))
+  (looking-at "^[ \t]*")
+  (if (and blankval (= (match-end 0) (point-at-eol)))
+      blankval
+    (floor (/ (- (match-end 0) (match-beginning 0))
+              moonscript-indent-offset))))
+
+(defun moonscript-indent-line ()
+  "Cycle indentation levels for the current line of MoonScript code.
+
+Looks at how deeply the previous non-blank line is nested. The
+maximum indentation level for the current line is that level plus
+one.
+
+When computing indentation depth, one tab is currently considered
+equal to one space. Tabs are currently replaced with spaces when
+re-indenting a line."
+  (goto-char (point-at-bol))
+  (let ((curlinestart (point))
+        (prevlineindent -1))
+    ;; Find indent level of previous non-blank line.
+    (while (and (< prevlineindent 0) (> (point) (point-min)))
+      (goto-char (1- (point)))
+      (goto-char (point-at-bol))
+      (setq prevlineindent (moonscript-indent-level -1)))
+    ;; Re-indent current line based on what we know.
+    (goto-char curlinestart)
+    (let* ((oldindent (moonscript-indent-level))
+           (newindent (if (= oldindent 0) (1+ prevlineindent)
+                        (1- oldindent))))
+      (replace-match (make-string (* newindent moonscript-indent-offset)
+                                  ? )))))
+
 (define-derived-mode moonscript-mode fundamental-mode "moonscript"
   (setq font-lock-defaults '(moonscript-font-lock-defaults))
 
+  (set (make-local-variable 'indent-line-function) 'moonscript-indent-line)
+  (when (fboundp 'electric-indent-local-mode)
+    ;; The electric indent feature re-indents the current line
+    ;; whenever the user types a newline. That doesn't mesh well with
+    ;; languages such as MoonScript that have significant whitespace.
+    (electric-indent-local-mode 0))
   (modify-syntax-entry ?\- ". 12b" moonscript-mode-syntax-table)
   (modify-syntax-entry ?\n "> b" moonscript-mode-syntax-table)
   (modify-syntax-entry ?\_ "w" moonscript-mode-syntax-table))
