@@ -16,9 +16,6 @@
   :tag "MoonScript"
   :group 'languages)
 
-(defvar moonscript-mode-hook nil
-  "List of functions to be executed with web-mode.")
-
 (defcustom moonscript-indent-offset 2
   "How many spaces to indent MoonScript code per level of nesting."
   :group 'moonscript
