@@ -73,18 +73,17 @@
   (concat "\\(\\_<\\w+\\) = "))
 
 (defvar moonscript-font-lock-defaults
-  (eval-when-compile
-    `((,moonscript-class-name-regex     . font-lock-type-face)
-      (,moonscript-function-regex       . font-lock-function-name-face)
-      (,moonscript-assignment-regex     . font-lock-preprocessor-face)
-      (,moonscript-constants-regex      . font-lock-constant-face)
-      (,moonscript-keywords-regex       . font-lock-keyword-face)
-      (,moonscript-ivar-regex           . font-lock-variable-name-face)
-      (,moonscript-assignment-var-regex . (1 font-lock-variable-name-face))
-      (,moonscript-octal-number-regex   . font-lock-constant-face)
-      (,moonscript-number-regex         . font-lock-constant-face)
-      (,moonscript-table-key-regex      . font-lock-variable-name-face)
-      ("!"                              . font-lock-warning-face))))
+  `((,moonscript-class-name-regex     . font-lock-type-face)
+    (,moonscript-function-regex       . font-lock-function-name-face)
+    (,moonscript-assignment-regex     . font-lock-preprocessor-face)
+    (,moonscript-constants-regex      . font-lock-constant-face)
+    (,moonscript-keywords-regex       . font-lock-keyword-face)
+    (,moonscript-ivar-regex           . font-lock-variable-name-face)
+    (,moonscript-assignment-var-regex . (1 font-lock-variable-name-face))
+    (,moonscript-octal-number-regex   . font-lock-constant-face)
+    (,moonscript-number-regex         . font-lock-constant-face)
+    (,moonscript-table-key-regex      . font-lock-variable-name-face)
+    ("!"                              . font-lock-warning-face)))
 
 (defun moonscript-indent-level (&optional blankval)
   "Return nesting depth of current line.
@@ -125,7 +124,8 @@ re-indenting a line."
                                   ? )))))
 
 (define-derived-mode moonscript-mode fundamental-mode "moonscript"
-  (setq font-lock-defaults '(moonscript-font-lock-defaults))
+  (set (make-local-variable 'font-lock-defaults)
+       '(moonscript-font-lock-defaults))
 
   (set (make-local-variable 'indent-line-function) 'moonscript-indent-line)
   (when (fboundp 'electric-indent-local-mode)
