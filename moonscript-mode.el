@@ -120,7 +120,7 @@ re-indenting a line."
       (replace-match (make-string (* newindent moonscript-indent-offset)
                                   ? )))))
 
-(define-derived-mode moonscript-mode fundamental-mode "moonscript"
+(define-derived-mode moonscript-mode fundamental-mode "MoonScript"
   (set (make-local-variable 'font-lock-defaults)
        '(moonscript-font-lock-defaults))
 
