@@ -1,4 +1,4 @@
-;;; moonscript-mode.el --- a major-mode for editing Moonscript
+;;; moonscript.el --- Major mode for editing MoonScript code
 ;;;
 ;;; Author: @GriffinSchneider, @k2052, @EmacsFodder
 ;;; Version: 20140803-0.1.0
