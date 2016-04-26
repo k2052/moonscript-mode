@@ -4,8 +4,8 @@
 ;;; Version: 20140803-0.1.0
 ;;; Commentary:
 ;;
-;;  A basic major mode for editing MoonScript, a preprocessed language
-;;  for Lua which shares many similarities with CoffeeScript.
+;; A basic major mode for editing MoonScript, a preprocessed language
+;; for Lua which shares many similarities with CoffeeScript.
 ;;
 ;;; License: MIT Licence
 ;;
