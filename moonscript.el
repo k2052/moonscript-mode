@@ -134,7 +134,7 @@ re-indenting a line."
   (modify-syntax-entry ?\n "> b" moonscript-mode-syntax-table)
   (modify-syntax-entry ?\_ "w" moonscript-mode-syntax-table))
 
-(provide 'moonscript-mode)
+(provide 'moonscript)
 
 ;;;###autoload
 (add-to-list 'auto-mode-alist '("\\.moon\\'" . moonscript-mode))
