@@ -1,11 +1,11 @@
-;;; moonscript-mode.el --- a major-mode for editing Moonscript
+;;; moonscript.el --- Major mode for editing MoonScript code
 ;;;
 ;;; Author: @GriffinSchneider, @k2052, @EmacsFodder
 ;;; Version: 20140803-0.1.0
 ;;; Commentary:
 ;;
-;;  A basic major mode for editing MoonScript, a preprocessed language
-;;  for Lua which shares many similarities with CoffeeScript.
+;; A basic major mode for editing MoonScript, a preprocessed language
+;; for Lua which shares many similarities with CoffeeScript.
 ;;
 ;;; License: MIT Licence
 ;;
@@ -134,7 +134,7 @@ re-indenting a line."
   (modify-syntax-entry ?\n "> b" moonscript-mode-syntax-table)
   (modify-syntax-entry ?\_ "w" moonscript-mode-syntax-table))
 
-(provide 'moonscript-mode)
+(provide 'moonscript)
 
 ;;;###autoload
 (add-to-list 'auto-mode-alist '("\\.moon\\'" . moonscript-mode))
