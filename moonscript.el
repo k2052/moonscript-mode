@@ -1,7 +1,8 @@
 ;;; moonscript.el --- Major mode for editing MoonScript code
 ;;;
-;;; Author: @GriffinSchneider, @k2052, @EmacsFodder
-;;; Version: 20140803-0.1.0
+;; Author: @GriffinSchneider, @k2052, @EmacsFodder
+;; Version: 20140803-0.1.0
+;; Package-Requires: ((cl-lib "0.5"))
 ;;; Commentary:
 ;;
 ;; A basic major mode for editing MoonScript, a preprocessed language
@@ -10,6 +11,8 @@
 ;;; License: MIT Licence
 ;;
 ;;; Code:
+
+(require 'cl-lib)
 
 (defgroup moonscript nil
   "MoonScript (for Lua) language support for Emacs."
@@ -87,7 +90,7 @@
 
 If BLANKVAL is non-nil, return that instead if the line is blank.
 Upon return, regexp match data is set to the leading whitespace."
-  (assert (= (point) (point-at-bol)))
+  (cl-assert (= (point) (point-at-bol)))
   (looking-at "^[ \t]*")
   (if (and blankval (= (match-end 0) (point-at-eol)))
       blankval
