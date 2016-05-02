@@ -1,7 +1,8 @@
-;;; moonscriptrepl-mode.el --- a major-mode for editing Moonscript in a repl
+;;; moonscript-repl.el --- Major mode to interact with MoonScript REPL
 ;;
-;;; Author: @GriffinSchneider, @k2052, @EmacsFodder
-;;; Version: 20140803-0.1.0
+;; Author: @GriffinSchneider, @k2052, @EmacsFodder
+;; Version: 20140803-0.1.0
+;;
 ;;; Commentary:
 ;;
 ;;  A basic major mode for MoonScript REPL
@@ -10,14 +11,15 @@
 ;;
 ;;; Code:
 
-(require 'moonscript-mode)
+(require 'moonscript)
 
-(define-derived-mode moonscriptrepl-mode comint-mode "moonscriptrepl"
-  (setq font-lock-defaults '(moonscript-font-lock-defaults))
+(define-derived-mode moonscript-repl-mode comint-mode "MoonScript REPL"
+  "Major mode to interact with a MoonScript REPL.
 
-  (modify-syntax-entry ?\- ". 12b" moonscript-mode-syntax-table)
-  (modify-syntax-entry ?\n "> b" moonscript-mode-syntax-table)
-  (modify-syntax-entry ?\_ "w" moonscript-mode-syntax-table))
+See https://github.com/leafo/moonscript/wiki/Moonscriptrepl"
+  (set-syntax-table moonscript-mode-syntax-table)
+  (setq font-lock-defaults '(moonscript-font-lock-defaults)))
 
-(provide 'moonscriptrepl-mode)
-;;; moonscriptrepl-mode.el ends here
+(provide 'moonscript-repl)
+
+;;; moonscript-repl.el ends here
