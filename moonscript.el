@@ -122,24 +122,20 @@ re-indenting a line."
                         (1- oldindent))))
       (replace-match (make-string (* newindent moonscript-indent-offset)
                                   ? )))))
-;;;###autoload
-(define-derived-mode moonscript-mode fundamental-mode "MoonScript"
-  (set (make-local-variable 'font-lock-defaults)
-       '(moonscript-font-lock-defaults))
 
+;;;###autoload
+(define-derived-mode moonscript-mode prog-mode "MoonScript"
+  "Major mode for editing MoonScript code."
+  (setq font-lock-defaults '(moonscript-font-lock-defaults))
   (set (make-local-variable 'indent-line-function) 'moonscript-indent-line)
-  (when (fboundp 'electric-indent-local-mode)
-    ;; The electric indent feature re-indents the current line
-    ;; whenever the user types a newline. That doesn't mesh well with
-    ;; languages such as MoonScript that have significant whitespace.
-    (electric-indent-local-mode 0))
+  (set (make-local-variable 'electric-indent-inhibit) t)
   (modify-syntax-entry ?\- ". 12b" moonscript-mode-syntax-table)
   (modify-syntax-entry ?\n "> b" moonscript-mode-syntax-table)
   (modify-syntax-entry ?\_ "w" moonscript-mode-syntax-table))
 
-(provide 'moonscript)
-
 ;;;###autoload
 (add-to-list 'auto-mode-alist '("\\.moon\\'" . moonscript-mode))
+
+(provide 'moonscript)
 
 ;;; moonscript.el ends here
