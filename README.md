@@ -1,12 +1,26 @@
 # moonscript-mode
 
-An Emacs major mode for moonscript source files and for [moonscript
-repl](https://github.com/leafo/moonscript/wiki/Moonscriptrepl). 
-Modified from stuff I found in [@GriffinSchneider's Emacs configs](https://github.com/GriffinSchneider/emacs-config)
+## Overview
 
-# Installation
+A basic major mode for editing [MoonScript](http://moonscript.org/), a
+preprocessed language for [Lua](https://www.lua.org/) which shares
+many similarities with [CoffeeScript](http://coffeescript.org/).
 
-## Manual
+Also includes a very basic major mode for the experimental
+[MoonScript REPL](https://github.com/leafo/moonscript/wiki/Moonscriptrepl).
+
+## History
+
+This mode started out as a modification of stuff found in
+[@GriffinSchneider's Emacs configs](https://github.com/GriffinSchneider/emacs-config).
+
+## Installation
+
+### From MELPA
+
+The easiest way to get the mode is to install the `moonscript` package from the [MELPA](https://melpa.org/) package archive.
+
+### Manual
 
     $ cd ~/.emacs.d/vendor
     $ git clone https://github.com/k2052/moonscript-mode.git
@@ -17,14 +31,9 @@ And add following to your .emacs file:
     (require 'moonscript-mode)
     (require 'moonscriptrepl-mode)
 
-## Via Package.el
+## Usage
 
-I've not pushed this to any package sites yet but will as I soon as I figure out the package definitions. 
-This is my first emacs package :)
-
-# Usage
-
-## With a REPL
+### With a REPL
 
 If you load up a moonscript REPL (see https://github.com/leafo/moonscript/wiki/Moonscriptrepl) you can 
 then hit:
@@ -33,9 +42,9 @@ then hit:
 
 to activate.
 
-Improvements and more docs will come as I need them.
+Improvements and more docs will come as we need them.
 
-## Support
+### Support
 
 If you found this repo useful please consider supporting me on [Gittip](https://www.gittip.com/k2052) or sending me some
 bitcoin `1csGsaDCFLRPPqugYjX93PEzaStuqXVMu`
