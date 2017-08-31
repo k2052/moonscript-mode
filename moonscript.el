@@ -25,6 +25,12 @@
   :type 'integer
   :safe 'integerp)
 
+(defcustom moonscript-comment-start "-- "
+  "Default value of `comment-start'."
+  :group 'moonscript
+  :type 'string
+  :safe 'stringp)
+
 (defvar moonscript-statement
   '("return" "break" "continue"))
 
@@ -129,6 +135,7 @@ re-indenting a line."
   (setq font-lock-defaults '(moonscript-font-lock-defaults))
   (set (make-local-variable 'indent-line-function) 'moonscript-indent-line)
   (set (make-local-variable 'electric-indent-inhibit) t)
+  (set (make-local-variable 'comment-start) moonscript-comment-start)
   (modify-syntax-entry ?\- ". 12b" moonscript-mode-syntax-table)
   (modify-syntax-entry ?\n "> b" moonscript-mode-syntax-table)
   (modify-syntax-entry ?\_ "w" moonscript-mode-syntax-table))
