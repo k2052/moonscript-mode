@@ -1,4 +1,4 @@
-;;; moonscript-repl.el --- Major mode to interact with MoonScript REPL
+;;; moonscript-repl.el --- Major mode to interact with MoonScript REPL -*- lexical-binding: t -*-
 ;;
 ;; Author: @GriffinSchneider, @k2052, @EmacsFodder
 ;; Version: 20140803-0.1.0

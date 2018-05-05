@@ -1,4 +1,4 @@
-;;; moonscript.el --- Major mode for editing MoonScript code
+;;; moonscript.el --- Major mode for editing MoonScript code -*- lexical-binding: t -*-
 ;;;
 ;; Author: @GriffinSchneider, @k2052, @EmacsFodder
 ;; Version: 20140803-0.1.0
