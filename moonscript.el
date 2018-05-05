@@ -1,6 +1,6 @@
 ;;; moonscript.el --- Major mode for editing MoonScript code -*- lexical-binding: t -*-
 ;;;
-;; Author: @GriffinSchneider, @k2052, @EmacsFodder
+;; Author: @GriffinSchneider, @k2052, @EmacsFodder, @lassik
 ;; Version: 20140803-0.1.0
 ;; Package-Requires: ((cl-lib "0.5") (emacs "24"))
 ;;; Commentary:
