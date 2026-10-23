@@ -1,8 +1,12 @@
-;;; moonscript.el --- Major mode for editing MoonScript code
-;;;
+;;; moonscript.el --- Major mode for editing MoonScript code  -*- lexical-binding: t; -*-
+;;
 ;; Author: @GriffinSchneider, @k2052, @EmacsFodder
+;; Maintainer: k2052
+;; URL: https://github.com/k2052/moonscript-mode
+;; Keywords: languages moonscript lua
 ;; Version: 20140803-0.1.0
-;; Package-Requires: ((cl-lib "0.5") (emacs "24"))
+;; Package-Requires: ((emacs "24") (cl-lib "0.5"))
+;; SPDX-License-Identifier: MIT
 ;;; Commentary:
 ;;
 ;; A basic major mode for editing MoonScript, a preprocessed language
@@ -96,9 +100,9 @@
 
 If BLANKVAL is non-nil, return that instead if the line is blank.
 Upon return, regexp match data is set to the leading whitespace."
-  (cl-assert (= (point) (point-at-bol)))
+  (cl-assert (= (point) (line-beginning-position)))
   (looking-at "^[ \t]*")
-  (if (and blankval (= (match-end 0) (point-at-eol)))
+  (if (and blankval (= (match-end 0) (line-end-position)))
       blankval
     (floor (/ (- (match-end 0) (match-beginning 0))
               moonscript-indent-offset))))
@@ -113,13 +117,13 @@ one.
 When computing indentation depth, one tab is currently considered
 equal to one space. Tabs are currently replaced with spaces when
 re-indenting a line."
-  (goto-char (point-at-bol))
+  (goto-char (line-beginning-position))
   (let ((curlinestart (point))
         (prevlineindent -1))
     ;; Find indent level of previous non-blank line.
     (while (and (< prevlineindent 0) (> (point) (point-min)))
       (goto-char (1- (point)))
-      (goto-char (point-at-bol))
+      (goto-char (line-beginning-position))
       (setq prevlineindent (moonscript-indent-level -1)))
     ;; Re-indent current line based on what we know.
     (goto-char curlinestart)
